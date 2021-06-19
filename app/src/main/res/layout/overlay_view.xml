@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_head_root"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--Profile image for the chat head.-->
+    <ImageView
+        android:id="@+id/img_overlay"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/red_circle"
+        app:layout_constraintEnd_toEndOf="@+id/btn_overlay"
+        app:layout_constraintStart_toStartOf="@+id/btn_overlay"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/btn_overlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_overlay" />
+
+    <TextView
+        android:id="@+id/txt_overlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_overlay"
+        tools:text="MyTextView" />
+
+    <!--Close button-->
+</androidx.constraintlayout.widget.ConstraintLayout>

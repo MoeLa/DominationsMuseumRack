@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/artifact_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Artifact-Name" />
+
+    <TextView
+        android:id="@+id/artifact_category"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_name"
+        tools:text="Category" />
+
+    <TextView
+        android:id="@+id/artifact_skills1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Feindlicher-Verteidiger-Erscheinungszeit" />
+
+    <TextView
+        android:id="@+id/artifact_level1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/artifact_bonus1"
+        app:layout_constraintStart_toStartOf="@+id/artifact_category"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills1"
+        tools:text="2/10" />
+
+    <TextView
+        android:id="@+id/artifact_bonus1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/artifact_skills1"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills1"
+        tools:text="+12%" />
+
+    <TextView
+        android:id="@+id/artifact_skills2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_level1"
+        tools:text="Bücherei-Technologie-Ressourcenkosten" />
+
+    <TextView
+        android:id="@+id/artifact_level2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills2"
+        tools:text="10/10" />
+
+    <TextView
+        android:id="@+id/artifact_bonus2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills2"
+        tools:text="-20%" />
+
+    <TextView
+        android:id="@+id/artifact_skills3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_level2"
+        tools:text="Erbeutetes Öl" />
+
+    <TextView
+        android:id="@+id/artifact_level3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills3"
+        tools:text="1/10" />
+
+    <TextView
+        android:id="@+id/artifact_bonus3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills3"
+        tools:text="+1%" />
+
+    <TextView
+        android:id="@+id/artifact_skills4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_level3"
+        tools:text="Taktischer-Invasionshelikopter-Trefferpunkte" />
+
+    <TextView
+        android:id="@+id/artifact_level4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills4"
+        tools:text="9/10" />
+
+    <TextView
+        android:id="@+id/artifact_bonus4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills4"
+        tools:text="-14%" />
+
+    <TextView
+        android:id="@+id/artifact_skills5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_level4"
+        tools:text="Schaden aller feindlicher Verteidigungstürme" />
+
+    <TextView
+        android:id="@+id/artifact_level5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills5"
+        tools:text="6/10" />
+
+    <TextView
+        android:id="@+id/artifact_bonus5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artifact_skills5"
+        tools:text="+11%" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
