@@ -5,5 +5,10 @@
         android:id="@+id/main_activity_action_start_overlay"
         android:icon="@drawable/baseline_flight_takeoff_black_24"
         android:title="@string/button_start_overlay"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/main_activity_action_clear_artifacts"
+        android:icon="@drawable/baseline_clear_all_black_24"
+        android:title="@string/button_clear_artifacts"
+        app:showAsAction="never" />
 </menu>

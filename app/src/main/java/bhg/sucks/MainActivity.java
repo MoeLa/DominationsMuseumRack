@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "bgh.sucks.MESSAGE";
     public static final String SCREENCAPTURE_DATA = "bhg.sucks.SCREENCAPTURE_DATA";
 
-    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
-    private Intent screenCaptureData;
+    private final ExecutorService mExecutorService = Executors.newSingleThreadExecutor();
+    private Intent mScreenCaptureData;
     private final ActivityResultLauncher<Intent> mAskForDrawOverlayPermissionsContract = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == Activity.RESULT_OK) {
-                    this.screenCaptureData = result.getData();
+                    this.mScreenCaptureData = result.getData();
                     startOverlay();
                 } else {
                     Toast.makeText(this, "No permission to capture the screen granted", Toast.LENGTH_LONG).show();
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvArtifacts = findViewById(R.id.rv_artifacts);
         rvArtifacts.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
-        executorService.execute(() -> {
+        mExecutorService.execute(() -> {
             LiveData<List<Artifact>> liveArtifacts = AppDatabase.getDatabase(this)
                     .artifactDao()
                     .loadAllArtifacts();
@@ -103,11 +103,16 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        if (item.getItemId() == R.id.main_activity_action_clear_artifacts) {
+            clearArtifacts();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
     public void startOverlay() {
-        if (screenCaptureData == null) {
+        if (mScreenCaptureData == null) {
             MediaProjectionManager mProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
             mScreenCaptureContract.launch(mProjectionManager.createScreenCaptureIntent());
             return;
@@ -119,13 +124,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Intent overlayServiceIntent = new Intent(this, OverlayIconService.class);
-        overlayServiceIntent.putExtra(SCREENCAPTURE_DATA, (Intent) screenCaptureData);
+        overlayServiceIntent.putExtra(SCREENCAPTURE_DATA, (Intent) mScreenCaptureData);
 
         startService(overlayServiceIntent);
     }
 
     public void addDummyArtifact(View view) {
-        executorService.execute(() -> {
+        mExecutorService.execute(() -> {
             Random r = new Random();
 
             long rowId = AppDatabase.getDatabase(this)
@@ -164,8 +169,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void clearArtifacts(View view) {
-        executorService.execute(() -> {
+    public void clearArtifacts() {
+        mExecutorService.execute(() -> {
             AppDatabase.getDatabase(this)
                     .artifactDao()
                     .deleteAll();
