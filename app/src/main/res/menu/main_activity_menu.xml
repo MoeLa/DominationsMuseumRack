@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/main_activity_action_start_overlay"
+        android:icon="@drawable/baseline_flight_takeoff_black_24"
+        android:title="@string/button_start_overlay"
+        app:showAsAction="ifRoom"/>
+</menu>

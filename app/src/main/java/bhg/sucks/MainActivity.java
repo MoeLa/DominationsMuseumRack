@@ -8,12 +8,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             result -> {
                 if (Settings.canDrawOverlays(this)) {
                     Log.v("Request permission", "Draw overlays -> SUCCESS");
-                    startOverlay(null);
+                    startOverlay();
                 } else {
                     Toast.makeText(this, "No permission to draw overlays granted", Toast.LENGTH_LONG).show();
                 }
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             result -> {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     this.screenCaptureData = result.getData();
-                    startOverlay(null);
+                    startOverlay();
                 } else {
                     Toast.makeText(this, "No permission to capture the screen granted", Toast.LENGTH_LONG).show();
                 }
@@ -66,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar tb = findViewById(R.id.main_activity_toolbar);
+        setSupportActionBar(tb);
 
         RecyclerView rvArtifacts = findViewById(R.id.rv_artifacts);
         rvArtifacts.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
@@ -83,7 +90,23 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void startOverlay(View view) {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_activity_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.main_activity_action_start_overlay) {
+            startOverlay();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void startOverlay() {
         if (screenCaptureData == null) {
             MediaProjectionManager mProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
             mScreenCaptureContract.launch(mProjectionManager.createScreenCaptureIntent());

@@ -6,40 +6,40 @@
     android:layout_height="match_parent"
     tools:context="bhg.sucks.MainActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/main_activity_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+<!--        app:menu="@menu/main_activity_menu"-->
+
     <Button
         android:id="@+id/btn_addDummyArtifact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:onClick="addDummyArtifact"
         android:text="@string/button_add_dummy_artifact"
-        app:layout_constraintStart_toStartOf="@+id/btn_start_overlay"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start_overlay" />
-
-    <Button
-        android:id="@+id/btn_start_overlay"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="startOverlay"
-        android:text="@string/button_start_overlay"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_toolbar" />
 
     <Button
         android:id="@+id/button_clear_artifacts"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:onClick="clearArtifacts"
         android:text="@string/button_clear_artifacts"
-        app:layout_constraintEnd_toEndOf="@+id/btn_start_overlay"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_addDummyArtifact"
-        app:layout_constraintTop_toBottomOf="@+id/btn_start_overlay" />
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_artifacts"
